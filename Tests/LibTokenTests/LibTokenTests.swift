@@ -1,5 +1,9 @@
 import XCTest
-import Base32
+#if canImport(Base32)
+    import Base32
+#else
+    import SwiftBase32
+#endif
 @testable import LibToken
 
 final class LibTokenTests: XCTestCase {
@@ -18,7 +22,7 @@ final class LibTokenTests: XCTestCase {
             XCTAssertTrue(token.generator.algorithm == .md5, "Got incorrect algorithm")
             XCTAssertTrue(token.generator.digits == 8, "Got incorrect digits")
             
-            let secret = Base32.encode(token.generator.secret)
+            let secret = token.generator.secret.base32EncodedString
             XCTAssertTrue(secret == "FEEDFACE", "Incorrectly encoded/decoded or wrong secret")
         } catch {
             XCTFail(error.localizedDescription)
@@ -39,7 +43,7 @@ final class LibTokenTests: XCTestCase {
             XCTAssertTrue(token.generator.algorithm == .sha512, "Got incorrect algorithm")
             XCTAssertTrue(token.generator.digits == 7, "Got incorrect digits")
             
-            let secret = Base32.encode(token.generator.secret)
+            let secret = token.generator.secret.base32EncodedString
             XCTAssertTrue(secret == "FEEDFACE", "Incorrectly encoded/decoded or wrong secret")
         } catch {
             XCTFail(error.localizedDescription)

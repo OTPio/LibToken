@@ -6,7 +6,11 @@
 //
 
 import Foundation
-import Base32
+#if canImport(Base32)
+    import Base32
+#else
+    import SwiftBase32
+#endif
 
 internal extension Token {
     static func extractLabel(path: String) throws -> String {
@@ -59,7 +63,8 @@ internal extension Generator {
     }
     static func extractSecret(components: [URLQueryItem]?) throws -> Data {
         guard let secretString = components?.filter({ $0.name == "secret" }).first?.value else { throw TokenError.missingSecret }
-        return try Base32.decode(secretString)
+        guard let data = secretString.base32DecodedData else { throw TokenError.missingSecret }
+        return data
     }
     static func extractDigits(components: [URLQueryItem]?) -> Int {
         if let digits = components?.filter({ $0.name == "digits" }).first?.value {

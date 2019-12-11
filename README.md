@@ -52,7 +52,7 @@ token.type
     - mattrubin's [OneTimePassword](https://github.com/mattrubin/OneTimePassword)
     - kishikawakatsumi's [KeychainAccess](https://github.com/kishikawakatsumi/KeychainAccess)
 - Uses
-    - [Base32](https://github.com/mattrubin/Bases)
+    - [SwiftBase32](https://github.com/norio-nomura/Base32/blob/master/Package.swift)
     - [RxSwift](https://github.com/ReactiveX/RxSwift)
 
 ## License

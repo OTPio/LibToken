@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name     = "LibToken"
-    spec.version  = "1.0.0"
+    spec.version  = "2.0.0"
     spec.summary  = "A library for managing 2FA tokens"
     spec.homepage = "https://github.com/OTPio/LibToken"
     spec.license  = "MIT"
@@ -15,5 +15,5 @@ Pod::Spec.new do |spec|
     spec.source       = { :git => "https://github.com/OTPio/LibToken.git", :tag => spec.version }
     spec.source_files = "Sources/LibToken/**/*.{swift}"
     
-    spec.dependency "Base32", "~> 1.1.2"
+    spec.dependency "SwiftBase32", "~> 0.8.0"
 end
