@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Bases",
+        "repositoryURL": "https://github.com/mattrubin/Bases.git",
+        "state": {
+          "branch": "develop",
+          "revision": "9d1885cd3b708b5d0493196d360f3dcad7679330",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
