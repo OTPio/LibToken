@@ -13,7 +13,7 @@ let package = Package(
         .library(name: "LibToken", targets: ["LibToken"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/mattrubin/Bases.git", Package.Dependency.Requirement.branch("develop"))
+        .package(url: "https://github.com/norio-nomura/Base32", from: "0.7.0")
     ],
     targets: [
         .target(name: "LibToken", dependencies: ["Base32"]),
