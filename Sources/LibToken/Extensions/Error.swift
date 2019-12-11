@@ -30,4 +30,5 @@ public enum KeychainError: Error {
     case incorrectType
     case incorrectIdentifierType
     case serializationFailed
+    case missingReference
 }
