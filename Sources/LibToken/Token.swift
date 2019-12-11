@@ -7,13 +7,42 @@
 
 import Foundation
 
-struct Token {
-    let label : String
-    let issuer: String
+public struct Token {
+    public var label : String
+    public var issuer: String
     
-    let generator: Generator
+    var generator: Generator
     
-    init(_ url: URL?) throws {
+    public var digits: Int {
+        get { return generator.digits }
+        set { generator.digits = newValue }
+    }
+    public var algorithm: Algorithm {
+        get { return generator.algorithm }
+        set { generator.algorithm = newValue }
+    }
+    public var secret: Data {
+        get { return generator.secret }
+    }
+    public var period: Int {
+        get {
+            switch generator.type {
+            case .totp(let p): return Int(p)
+            case .hotp(let c): return Int(c)
+            }
+        }
+    }
+    public var type: String {
+        get {
+            switch generator.type {
+            case .totp(_): return "TOTP"
+            case .hotp(_): return "HOTP"
+            }
+        }
+    }
+    
+    
+    public init(_ url: URL?) throws {
         guard let url = url, let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { throw TokenError.nullUrlPassed }
         
         guard components.scheme == "otpauth" else { throw TokenError.schemeIncorrect }
@@ -30,15 +59,15 @@ struct Token {
         self.generator = generator
     }
     
-    func password(at time: Date = Date()) -> String {
+    public func password(at time: Date = Date()) -> String {
         return generator.password(at: time)
     }
     
-    func timeRemaining(at time: Date = Date(), reversed: Bool = false) -> Int {
+    public func timeRemaining(at time: Date = Date(), reversed: Bool = false) -> Int {
         return generator.timeRemaining(at: time, reversed: reversed)
     }
     
-    func nextToken() -> Token {
+    public func nextToken() -> Token {
         return Token(label: label, issuer: issuer, generator: generator.generatorAfter())
     }
 }

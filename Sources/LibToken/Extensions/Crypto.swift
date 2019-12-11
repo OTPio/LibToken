@@ -11,7 +11,7 @@ import CommonCrypto
     import CryptoKit
 #endif
 
-func hmac(algorithm: Algorithm, secret: Data, data: Data) -> Data {
+internal func hmac(algorithm: Algorithm, secret: Data, data: Data) -> Data {
     #if canImport(CryptoKit)
     if #available(iOS 13.0, macOS 10.15, watchOS 6.0, tvOS 13.0, *) {
         return ckhmac(algorithm, secret, data)

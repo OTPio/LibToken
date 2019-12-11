@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TokenError: Error {
+public enum TokenError: Error {
     case nullUrlPassed
     case schemeIncorrect
     case missingLabel, missingIssuer, missingSecret, missingType, missingCounter
@@ -25,7 +25,7 @@ enum TokenError: Error {
     }
 }
 
-enum KeychainError: Error {
+public enum KeychainError: Error {
     case unknownSystemError(OSStatus)
     case incorrectType
     case incorrectIdentifierType

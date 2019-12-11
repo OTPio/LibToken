@@ -7,11 +7,12 @@
 
 import Foundation
 
-struct Generator {
+internal struct Generator {
     let secret   : Data
-    let algorithm: Algorithm
-    let digits   : Int
     let type     : TokenType
+    
+    var algorithm: Algorithm
+    var digits   : Int
     
     init(from components: URLComponents) throws {
         secret = try Generator.extractSecret(components: components.queryItems)

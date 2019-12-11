@@ -8,7 +8,7 @@
 import Foundation
 import Base32
 
-extension Token {
+internal extension Token {
     static func extractLabel(path: String) throws -> String {
         let split = path.split(separator: "/")
         guard let last = split.last else { throw TokenError.missingLabel }
@@ -40,7 +40,7 @@ extension Token {
     }
 }
 
-extension Generator {
+internal extension Generator {
     static func extractType(host: String?, components: [URLQueryItem]?) throws -> TokenType {
         guard let host = host else { throw TokenError.missingType }
         switch host {
