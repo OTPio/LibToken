@@ -45,3 +45,18 @@ token.period
 // Type (HOTP/TOTP) (read only)
 token.type
 ```
+
+## Credit
+- Author: [MatrixSenpai](https://github.com/MatrixSenpai/)
+- Inspiration
+    - mattrubin's [OneTimePassword](https://github.com/mattrubin/OneTimePassword)
+    - kishikawakatsumi's [KeychainAccess](https://github.com/kishikawakatsumi/KeychainAccess)
+- Uses
+    - [Base32](https://github.com/mattrubin/Bases)
+    - [RxSwift](https://github.com/ReactiveX/RxSwift)
+
+## License
+LibToken is licensed under the MIT license. See the LICENSE file for more information
+
+
+All dependencies are licensed under their respective licenses. Access those repositories for more information
