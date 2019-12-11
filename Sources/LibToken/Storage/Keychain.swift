@@ -9,7 +9,8 @@ import Foundation
 
 public final class Keychain {
     static let service: String = "app.otpio.keychain"
-    static let shared: Keychain = Keychain()
+    
+    public static let shared: Keychain = Keychain()
     
     public func create(_ token: Token) throws -> PersistantToken {
         let attributes = try token.attributes()
