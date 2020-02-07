@@ -7,6 +7,12 @@
 
 import Foundation
 
+internal extension RangeReplaceableCollection where Self: StringProtocol {
+    func paddingToLeft(upTo length: Int, using element: Element = " ") -> SubSequence {
+        return repeatElement(element, count: Swift.max(0, length-count)) + suffix(Swift.max(count, count-length))
+    }
+}
+
 internal struct Generator {
     let secret   : Data
     let type     : TokenType
@@ -66,7 +72,7 @@ internal struct Generator {
         truncated &= 0x7fffffff
         truncated = truncated % UInt32(pow(10, Float(digits)))
         
-        return String(truncated).padding(toLength: digits, withPad: "0", startingAt: 0)
+        return String(String(truncated).paddingToLeft(upTo: digits, using: "0"))
     }
     
     func timeRemaining(at time: Date, reversed: Bool) -> Int {
